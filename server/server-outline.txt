@@ -29,6 +29,22 @@ transactions //array of transactions
 
 
 
+Miner
+
+//no data members
+bool verify(), void mine()
+	sum of inputs > sum of outputs
+	recIn and recOut index > 0
+	amount > 0
+	check if tx is already there in any block //should return false
+	check if input matches any output in the transaction queue //should return false
+	//if all true
+	check inSig and outSig
+	
+
+
+
+
 BlockchainHandler
 
 //The handler should be able to
@@ -36,6 +52,20 @@ BlockchainHandler
 //add blocks
 //access blocks by height
 //spits out a block object at all times after handling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
