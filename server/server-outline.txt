@@ -1,0 +1,45 @@
+Record
+
+TID //transaction ID
+index
+amount //of coins
+string scriptSig //will contain signature and full pubKey
+string scriptPubKey //will contain pubKeyHash of recipient
+
+
+
+Transaction
+
+TID //transaction ID
+recIn //array of input records
+recOut //array of output records
+timestamp
+
+
+
+Block
+
+height //block number
+timestamp
+prevBlockHash
+blockHash
+merkleRoot
+nonce
+transactions //array of transactions
+
+
+
+BlockchainHandler
+
+//The handler should be able to
+//open file(DB)
+//add blocks
+//access blocks by height
+//spits out a block object at all times after handling
+
+
+
+Dependencies(for now):
+cryptographic libs, repeated hashing with modified nonce
+Database management system, to store blockchain
+Networking in c++, many-to-one transaction request
