@@ -6,3 +6,5 @@ server/\.vs/
 server/Debug/
 
 server/server/Debug/
+
+block/\.vs/
