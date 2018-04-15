@@ -10,3 +10,7 @@ server/server/Debug/
 block/\.vs/
 
 record/\.vs/
+
+block/block/\.vs/
+
+block/block/block\.vcxproj\.user
