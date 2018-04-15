@@ -11,9 +11,9 @@ private:
 	unsigned long int timestamp;
 public:
 	Transaction(std::string, std::vector<Record>, std::vector<Record>);
-	std::string getTID();
-	Record const& getRecIn(unsigned int);
-	Record const& getRecOut(unsigned int);
+	std::string getTID() const;
+	Record const& getRecIn(unsigned int) const;
+	Record const& getRecOut(unsigned int) const;
 	void setTID(std::string);
 	void setRecIn(Record const&, unsigned int);
 	void setRecOut(Record const&, unsigned int);
