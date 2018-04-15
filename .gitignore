@@ -14,3 +14,5 @@ record/\.vs/
 block/block/\.vs/
 
 block/block/block\.vcxproj\.user
+
+miner/\.vs/
