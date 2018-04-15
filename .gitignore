@@ -1,2 +1,8 @@
 
 transaction/\.vs/
+
+server/\.vs/
+
+server/Debug/
+
+server/server/Debug/
