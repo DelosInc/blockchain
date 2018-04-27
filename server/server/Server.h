@@ -10,8 +10,8 @@ class Server
 {
 public:
 	Server(boost::asio::io_context&, unsigned short);
-	void handleAccept(const boost::system::error_code&, connection_ptr);
-	void handleRead(const boost::system::error_code&, connection_ptr);
+	void handleAccept(const boost::system::error_code&, boost::shared_ptr<Connection>);
+	void handleRead(const boost::system::error_code&, boost::shared_ptr<Connection>);
 private:
 	boost::asio::ip::tcp::acceptor acceptor;
 	Transaction transaction;

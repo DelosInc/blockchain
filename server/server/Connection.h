@@ -99,6 +99,3 @@ private:
 	std::vector<char> inboundData;
 };
 
-
-typedef boost::shared_ptr<Connection> connection_ptr;
-
