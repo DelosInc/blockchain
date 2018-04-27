@@ -1,7 +1,7 @@
 #include "BlockchainHandler.h"
 
 BlockchainHandler::BlockchainHandler() {
-	
+
 	options.create_if_missing = true;
 	status = leveldb::DB::Open(options, "/testdb", &db);
 	assert(status.ok());

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <boost/asio.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
@@ -13,9 +14,9 @@
 class Connection
 {
 public:
-	
+
 	Connection(boost::asio::io_context& io_context)
-	: socket(io_context) {
+		: socket(io_context) {
 
 	}
 

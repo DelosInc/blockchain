@@ -15,12 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BlockchainHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BlockchainHandler.cpp">
+    <ClCompile Include="validator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

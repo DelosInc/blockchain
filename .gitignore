@@ -1,20 +1,2 @@
 
-transaction/\.vs/
-
-server/\.vs/
-
-server/Debug/
-
-server/server/Debug/
-
-block/\.vs/
-
-record/\.vs/
-
-block/block/\.vs/
-
-block/block/block\.vcxproj\.user
-
-miner/\.vs/
-
-blockchainHandler/\.vs/
+\.vs/
