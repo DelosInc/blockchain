@@ -7,13 +7,13 @@
 class Miner {
 private:
 	std::string address;
-	std::queue<Transaction> unverifiedTransactions;
+	Transaction unverifiedTransaction;
+	bool verifyTransaction();
+	bool verifySig();
 	std::vector<Transaction> verifiedTransactions;
-	bool verifyTransaction(Transaction);
-	bool verifySig(Transaction);
 	Block createBlock(vector<Transaction>);
 public:
 	Miner(std::string);
-	void addTransaction(Transaction);
+	void addTransaction();
 	Block mine();
 };
