@@ -6,6 +6,8 @@
 #include "Connection.h"
 #include <boost/serialization/vector.hpp>
 
+#include "transaction.h"
+
 class Server
 {
 public:

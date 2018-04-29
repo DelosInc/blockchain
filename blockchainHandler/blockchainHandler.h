@@ -7,6 +7,8 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <leveldb/db.h>
 
+#include "block.h"
+
 class BlockchainHandler
 {
 public:

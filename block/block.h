@@ -1,7 +1,9 @@
 #pragma once
 
-#include <iostream>
+#include <string>
 #include <vector>
+
+#include "transaction.h"
 
 class Block {
 private:
@@ -28,6 +30,6 @@ public:
 	void setMerkleRoot(std::string const&);
 	void setNonce(unsigned int);
 	void setTransaction(Transaction const&, unsigned int);
-	void setTransaction(vector<Transaction> const&);
+	void setTransaction(std::vector<Transaction> const&);
 };
 

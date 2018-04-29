@@ -66,6 +66,6 @@ void Block::setTransaction(Transaction const& transaction, unsigned int index) {
 	this->transactions[index] = transaction;
 }
 
-void Block::setTransaction(vector<Transaction> const& transactions) {
+void Block::setTransaction(std::vector<Transaction> const& transactions) {
 	this->transactions = transactions;
 }

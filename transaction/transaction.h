@@ -1,7 +1,9 @@
 #pragma once
 
-#include <iostream>
+#include <string>
 #include <vector>
+
+#include "record.h"
 
 class Transaction {
 private:
