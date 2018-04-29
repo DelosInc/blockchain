@@ -1,5 +1,4 @@
 #include "block.h"
-#include "boost/date_time/local_time/local_time.hpp"
 
 Block::Block(unsigned int height, std::string const& prevBlockHash, std::vector<Transaction> const& transactions)
 	: height(height),

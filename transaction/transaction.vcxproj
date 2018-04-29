@@ -124,6 +124,11 @@
   <ItemGroup>
     <ClCompile Include="transaction.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\record\record.vcxproj">
+      <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

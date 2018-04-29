@@ -124,6 +124,14 @@
   <ItemGroup>
     <ClCompile Include="client.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\server\server.vcxproj">
+      <Project>{c7e91b46-3d0e-4646-84ab-0ab667f42f81}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\transaction\transaction.vcxproj">
+      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

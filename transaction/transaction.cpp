@@ -1,5 +1,4 @@
 #include "transaction.h"
-#include "boost/date_time/local_time/local_time.hpp"
 
 Transaction::Transaction(std::string TID, std::vector<Record> recIn, std::vector<Record>recOut)
 	: TID(TID),
