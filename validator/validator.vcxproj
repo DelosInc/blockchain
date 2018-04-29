@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -85,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -96,7 +96,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -111,7 +111,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -122,6 +122,15 @@
     <ClCompile Include="validator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\blockchainHandler\blockchainHandler.vcxproj">
+      <Project>{1231840f-2967-4ec7-8a08-d1766cb40045}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\block\block.vcxproj">
+      <Project>{cc5e9094-70d5-4bd1-97af-e052eeb46e4a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\miner\miner.vcxproj">
+      <Project>{96d7292d-0b57-43a4-a108-ec943d583e09}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
     </ProjectReference>

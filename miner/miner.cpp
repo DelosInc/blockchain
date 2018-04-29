@@ -1,6 +1,7 @@
 #include <stack>
+#include <sha.h>
+
 #include "Miner.h"
-#include "C:\crypto++\sha.h"
 
 Miner::Miner(std::string address)
 	:address(address) {
