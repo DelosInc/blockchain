@@ -1,12 +1,5 @@
 #include "transaction.h"
 
-Transaction::Transaction(std::string TID, std::vector<Record> recIn, std::vector<Record>recOut)
-	: TID(TID),
-	recIn(recIn),
-	recOut(recOut) {
-
-}
-
 std::string Transaction::getTID() const {
 	return TID;
 }
@@ -19,16 +12,49 @@ Record const& Transaction::getRecOut(unsigned int index) const {
 	return recOut[index];
 }
 
+unsigned long int Transaction::getInSum() const {
+	unsigned long int inSum;
+	for (std::vector<Record>::iterator it = recIn.begin(); it != recIn.end(); ++it) {
+		inSum += it->getAmount;
+	}
+	return inSum;
+}
+
+unsigned long int Transaction::getOutSum() const {
+	unsigned long int outSum;
+	for (std::vector<Record>::iterator it = recOut.begin(); it != recOut.end(); ++it) {
+		outSum += it->getAmount;
+	}
+	return outSum;
+}
+
+unsigned int Transaction::getRecInSize() const {
+	return recIn.size();
+}
+
+std::string Transaction::getTransactionString() const {
+	std::string transactionString;
+	for (std::vector<Record>::iterator it = recIn.begin(); it != recIn.end(); ++it){
+		transactionString = transactionString + std::to_string(it->getAmount()) + std::to_string(it->getInSig().sig)
+			+ std::to_string(it->getInSig.pubKeyHash) + it->getOutSig();
+	}
+	for (std::vector<Record>::iterator it = recOut.begin(); it != recOut.end(); ++it) {
+		transactionString = transactionString + std::to_string(it->getAmount()) + it->getOutSig();
+	}
+	transactionString = transactionString + std::to_string(timestamp);
+	return transactionString;
+}
+
 void Transaction::setTID(std::string TID) {
 	this->TID = TID;
 }
 
-void Transaction::setRecIn(Record const& recIn, unsigned int index) {
-	this->recIn[index] = recIn;
+void Transaction::setRecIn(std::vector<Record> recIn) {
+	this->recIn = recIn;
 }
 
-void Transaction::setRecOut(Record const& recOut, unsigned int index) {
-	this->recOut[index] = recOut;
+void Transaction::setRecOut(std::vector<Record> recOut) {
+	this->recOut = recOut;
 }
 
 void Transaction::setTimestamp() {

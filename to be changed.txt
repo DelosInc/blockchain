@@ -2,3 +2,6 @@ add getInSum(), outSum, getOutSum(), sizeOfInput in transaction.
 add getBlockSize() in block.
 make inSig, structInSig with sig and pubKey
 outSig - pubKeyHash
+
+
+coinbaseTransaction - inherit from transaction
