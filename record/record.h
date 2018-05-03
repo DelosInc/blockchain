@@ -4,18 +4,17 @@
 
 class Record {
 private:
-	unsigned int index;
 	unsigned long int amount;
-	std::string inSig;
+	struct InSig {
+		std::string sig;
+		std::string pubKeyHash;
+	} inSig;
 	std::string outSig;
 public:
-	Record(unsigned int, unsigned long int);
-	unsigned int getIndex() const;
-	void setIndex(unsigned int);
 	unsigned long int getAmount() const;
 	void setAmount(unsigned long int);
-	std::string getInSig() const;
-	void setInSig(std::string);
+	struct InSig getInSig() const;
+	void setInSig(std::string, std::string);
 	std::string getOutSig() const;
 	void setOutSig(std::string);
 };

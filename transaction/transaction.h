@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "boost/date_time/local_time/local_time.hpp"
+#include <boost/date_time/local_time/local_time.hpp>
 
 #include "record.h"
 
@@ -13,12 +13,15 @@ private:
 	std::vector<Record> recOut;
 	unsigned long int timestamp;
 public:
-	Transaction(std::string, std::vector<Record>, std::vector<Record>);
 	std::string getTID() const;
 	Record const& getRecIn(unsigned int) const;
 	Record const& getRecOut(unsigned int) const;
+	unsigned long int getInSum() const;
+	unsigned long int getOutSum() const;
+	unsigned int getRecInSize() const;
+	std::string getTransactionString() const;
 	void setTID(std::string);
-	void setRecIn(Record const&, unsigned int);
-	void setRecOut(Record const&, unsigned int);
+	void setRecIn(std::vector<Record>);
+	void setRecOut(std::vector<Record>);
 	void setTimestamp();
 };
