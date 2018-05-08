@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -96,7 +96,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -130,6 +130,9 @@
     </ProjectReference>
     <ProjectReference Include="..\miner\miner.vcxproj">
       <Project>{96d7292d-0b57-43a4-a108-ec943d583e09}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\queueHandler\queueHandler.vcxproj">
+      <Project>{02e51ba1-563a-490d-87d8-2db421b6fce5}</Project>
     </ProjectReference>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>

@@ -1,14 +1,15 @@
 #include <stack>
 #include "Miner.h"
-#include "C:\crypto++\sha.h"
+#include "sha.h"
 
-Miner::Miner(std::string address)
-	:address(address) {
+Miner::Miner(std::string address, QueueHandler *currentQueue)
+	:address(address),
+	currentQueue(currentQueue){
 
 }
 
 void Miner::addTransaction() {
-	unverifiedTransaction = Validator::getTransaction();
+	unverifiedTransaction = currentQueue->getTransaction();
 }
 
 bool Miner::verifyTransaction() {

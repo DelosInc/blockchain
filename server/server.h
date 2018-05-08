@@ -8,15 +8,16 @@
 #include <boost/serialization/vector.hpp>
 
 #include "transaction.h"
+#include "queueHandler.h"
 
 class Server
 {
 public:
-	Server(boost::asio::io_context&, unsigned short);
+	Server(boost::asio::io_context&, unsigned short, QueueHandler*);
 	void handleAccept(const boost::system::error_code&, boost::shared_ptr<Connection>);
-	void handleRead(const boost::system::error_code&, boost::shared_ptr<Connection>);
 private:
 	boost::asio::ip::tcp::acceptor acceptor;
 	Transaction transaction;
+	QueueHandler *currentQueue;
 };
 

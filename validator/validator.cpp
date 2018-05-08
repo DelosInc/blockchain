@@ -1,22 +1,54 @@
-#include <iostream>
-#include <exception>
 #include <boost/asio.hpp>
-#include <boost/lexical_cast.hpp>
+#include <boost/bind.hpp>
+#include <iostream>
+#include <string>
+#include <thread>
 
-#include "Server.h"
+#include "server.h"
+#include "queueHandler.h"
+#include "miner.h"
 
-int main(int argc, char* argv[]) {
+static bool run;
+
+void serving(unsigned short int port, QueueHandler *currentQueue) {
 	try {
-		if (argc != 2) {
-			std::cerr << "Usage: server <port>" << std::endl;
-			return 1;
-		}
 		boost::asio::io_context io_context;
-		Server server(io_context, boost::lexical_cast<unsigned short>(argv[1]));
+		Server server(io_context, port, currentQueue);
 		io_context.run();
-
 	}
-	catch (std::exception &e) {
+	catch (std::exception& e){
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+void mining(std::string address, QueueHandler *currentQueue) {
+	Miner miner(address, currentQueue);
+	std::cout << "Enter N to stop";
+	while (run) {
+		miner.mine();
+	}
+}
+
+void control() {
+	if (std::cin.get() == 'N') {
+		run = false;
+	}
+}
+
+int main() {
+	QueueHandler currentQueue;
+	unsigned short int port;
+	std::string address;
+	std::cout << "Enter the port";
+	std::cin >> port;
+	std::cout << "Enter the address";
+	std::cin >> address;
+	run = true;
+	std::thread servingThread(serving, port, &currentQueue);
+	std::thread controlThread(control);
+	std::thread miningThread(mining, address, &currentQueue);
+	servingThread.join();
+	controlThread.join();
+	miningThread.join();
+	return 0;
 }
