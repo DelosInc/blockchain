@@ -1,6 +1,7 @@
 #pragma once
 
 #include <queue>
+#include <mutex>
 
 #include "transaction.h"
 
@@ -10,4 +11,5 @@ public:
 	Transaction getTransaction();
 private:
 	std::queue <Transaction> pool;
+	std::mutex mutex;
 };
