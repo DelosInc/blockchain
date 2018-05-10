@@ -13,6 +13,8 @@ void BlockchainHandler::addBlock(Block const& block) {
 	boost::archive::text_oarchive archive(archiveStream);
 	archive << block;
 	if (status.ok()) {
+		leveldb::WriteOptions write_options;
+		write_options.sync = true;
 		status = db->Put(leveldb::WriteOptions(), height, archiveStream.str());
 	}
 	blockchain.push_back(block);
@@ -36,7 +38,8 @@ BlockchainHandler::~BlockchainHandler() {
 }
 
 void BlockchainHandler::initList(unsigned int height) {
-	for (unsigned int i = MAXHEIGHT; i >= 1; i--) {
-		blockchain.push_back(getBlock(i));
+	leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
+	for (it->SeekToLast(); it->Valid(); it->Prev()) {
+		blockchain.push_back(getBlock(stoi(it->key().ToString())));
 	}
 }

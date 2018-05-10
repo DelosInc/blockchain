@@ -32,6 +32,6 @@ void Client::handleWrite(const boost::system::error_code& e) {
 	}
 }
 
-void Client::setTransaction(Transaction& transaction) {
+void Client::setTransaction(Transaction transaction) {
 	this->transaction = transaction;
 }
