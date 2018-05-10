@@ -38,10 +38,10 @@ std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
 std::vector<Record> Wallet::initialiseRecOut(unsigned long int amount, std::string address) {
 	std::vector<Record> recOut;
 	recOut[0].setAmount(amount);
-	recOut[0].setInSig(nullptr, nullptr);
-	recOut[0].setOutSig(address, concatenatedRecord); //outgoing amount
+	recOut[0].setInSig(nullptr, nullptr, nullptr);
+	recOut[0].setOutSig(address); //outgoing amount
 	recOut[1].setAmount(getBalance() - amount);
-	recOut[1].setInSig(nullptr, nullptr);
+	recOut[1].setInSig(nullptr, nullptr, nullptr);
 	recOut[1].setOutSig(getPubKeyHash()); //crediting change to self
 	return recOut;
 }

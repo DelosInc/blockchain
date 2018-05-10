@@ -13,17 +13,17 @@ Miner::Miner(std::string address, QueueHandler *currentQueue)
 
 }
 
-bool Miner::verifyTransaction() {
-	if ((unverifiedTransaction.getInSum() < unverifiedTransaction.getOutSum()) ||
-		unverifiedTransaction.getInSum() == 0 || unverifiedTransaction.getOutSum() == 0) {
+bool Miner::verifyTransaction(Transaction transaction) {
+	if ((transaction.getInSum() < transaction.getOutSum()) ||
+		transaction.getInSum() == 0 || transaction.getOutSum() == 0) {
 		return false;
 	}
 	if (!verifiedTransactions.empty()) {
-		for (int recIn_i = 0; recIn_i < unverifiedTransaction.getRecInSize(); recIn_i++) {
+		for (int recIn_i = 0; recIn_i < transaction.getRecInSize(); recIn_i++) {
 			for (int verified_i = 0; verified_i < verifiedTransactions.size(); verified_i++) {
 				for (int recOut_j = 0; recOut_j < 2; recOut_j++) {
-					if (unverifiedTransaction.getRecIn(recIn_i) ==
-						verifiedTransaction[verified_i].getRecOut(recOut_j)) {
+					if (transaction.getRecIn(recIn_i) ==
+						verifiedTransactions[verified_i].getRecOut[recOut_j]) {
 						return false;
 					}
 				}
