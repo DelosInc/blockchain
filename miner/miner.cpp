@@ -64,6 +64,7 @@ Block Miner::mine() {
 			it->join();
 		}
 	}
+	verifying.clear();
 	while (1) {
 		if (!currentQueue->isEmpty()) {
 			verifying.push_back(std::thread(&Miner::verify, this, currentQueue->getTransaction()));

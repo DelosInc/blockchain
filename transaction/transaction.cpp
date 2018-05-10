@@ -14,7 +14,7 @@ Record const& Transaction::getRecOut(unsigned int index) const {
 
 unsigned long int Transaction::getInSum() const {
 	unsigned long int inSum;
-	for (std::vector<Record>::iterator it = recIn.begin(); it != recIn.end(); ++it) {
+	for (std::vector<Record>::const_iterator it = recIn.begin(); it != recIn.end(); ++it) {
 		inSum += it->getAmount;
 	}
 	return inSum;
@@ -22,7 +22,7 @@ unsigned long int Transaction::getInSum() const {
 
 unsigned long int Transaction::getOutSum() const {
 	unsigned long int outSum;
-	for (std::vector<Record>::iterator it = recOut.begin(); it != recOut.end(); ++it) {
+	for (std::vector<Record>::const_iterator it = recOut.begin(); it != recOut.end(); ++it) {
 		outSum += it->getAmount;
 	}
 	return outSum;
