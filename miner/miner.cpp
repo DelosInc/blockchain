@@ -59,6 +59,11 @@ bool Miner::verifySig(std::string pubkeyStringHex, std::string message, std::str
 }
 
 Block Miner::mine() {
+	for (std::vector<std::thread>::iterator it = verifying.begin(); it != verifying.end(); ++it) {
+		if (it->joinable()) {
+			it->join();
+		}
+	}
 	while (1) {
 		if (!currentQueue->isEmpty()) {
 			verifying.push_back(std::thread(&Miner::verify, this, currentQueue->getTransaction()));
