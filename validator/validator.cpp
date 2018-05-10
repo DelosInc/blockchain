@@ -39,9 +39,9 @@ int main() {
 	QueueHandler currentQueue;
 	unsigned short int port;
 	std::string address;
-	std::cout << "Enter the port";
+	std::cout << "Enter the port: ";
 	std::cin >> port;
-	std::cout << "Enter the address";
+	std::cout << "Enter the address: ";
 	std::cin >> address;
 	run = true;
 	std::thread servingThread(serving, port, &currentQueue);

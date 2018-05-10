@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "client.h"
 #include "wallet.h"
 
 std::string Wallet::sign(std::string privateKeyHex, std::string record) {
@@ -81,14 +83,27 @@ int main() {
 	leveldb::DB* db;
 	Wallet w(db);
 	unsigned long int balance = w.getBalance();
-	std::cout << "Enter recipient address";
-	std::string outputAddress;
-	std::cin >> outputAddress;
-	std::cout << "Enter amount to be sent";
 	unsigned long int amount;
+	std::string outputAddress;
+	std::string hostname, port;
+	std::cout << "Enter the hostname: ";
+	std::cin >> hostname;
+	std::cout << "Enter the port: ";
+	std::cin >> port;
+	std::cout << "Enter recipient address: ";
+	std::cin >> outputAddress;
+	std::cout << "Enter amount to be sent: ";
 	std::cin >> amount;
 	if (amount >= balance) {
-		w.send(outputAddress, amount);
+		try {
+			boost::asio::io_context io_context;
+			Client client(io_context, hostname, port);
+			client.setTransaction(w.initialiseTransaction(outputAddress, amount));
+			io_context.run();
+		}
+		catch (std::exception& e) {
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	return 0;
 }
