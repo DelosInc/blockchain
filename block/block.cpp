@@ -40,9 +40,8 @@ void Block::setHeight(unsigned int height) {
 }
 
 void Block::setTimestamp() {
-	boost::posix_time::ptime time_t_local = boost::posix_time::second_clock::local_time();
-	boost::posix_time::ptime time_t_epoch(date(1970, 1, 1));
-	timestamp = time_t_local - time_t_epoch;
+	std::chrono::time_point<std::chrono::system_clock> p2 = std::chrono::system_clock::now();
+	timestamp = static_cast<unsigned long int> (std::chrono::duration_cast<std::chrono::seconds>(p2.time_since_epoch()).count());
 }
 
 void Block::setPrevBlockHash(std::string const& prevBlockHash) {

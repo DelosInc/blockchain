@@ -2,8 +2,6 @@
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
-#include <iostream>
-#include <vector>
 #include "Connection.h"
 #include <boost/serialization/vector.hpp>
 

@@ -23,5 +23,5 @@ std::string Record::getOutSig() const {
 }
 
 void Record::setOutSig(std::string outSig) {
-	this->outSig = outSig
+	this->outSig = outSig;
 }

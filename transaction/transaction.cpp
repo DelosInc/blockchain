@@ -13,17 +13,17 @@ Record const& Transaction::getRecOut(unsigned int index) const {
 }
 
 unsigned long int Transaction::getInSum() const {
-	unsigned long int inSum;
+	unsigned long int inSum = 0;
 	for (std::vector<Record>::const_iterator it = recIn.begin(); it != recIn.end(); ++it) {
-		inSum += it->getAmount;
+		inSum += it->getAmount();
 	}
 	return inSum;
 }
 
 unsigned long int Transaction::getOutSum() const {
-	unsigned long int outSum;
+	unsigned long int outSum = 0;
 	for (std::vector<Record>::const_iterator it = recOut.begin(); it != recOut.end(); ++it) {
-		outSum += it->getAmount;
+		outSum += it->getAmount();
 	}
 	return outSum;
 }
@@ -34,11 +34,11 @@ unsigned int Transaction::getRecInSize() const {
 
 std::string Transaction::getTransactionString() const {
 	std::string transactionString;
-	for (std::vector<Record>::iterator it = recIn.begin(); it != recIn.end(); ++it){
+	for (std::vector<Record>::const_iterator it = recIn.begin(); it != recIn.end(); ++it){
 		transactionString = transactionString + std::to_string(it->getAmount()) + it->getInSig().sig
-			+ std::to_string(it->getInSig.pubKeyHash) + it->getOutSig();
+			+ it->getInSig().pubKey + it->getOutSig();
 	}
-	for (std::vector<Record>::iterator it = recOut.begin(); it != recOut.end(); ++it) {
+	for (std::vector<Record>::const_iterator it = recOut.begin(); it != recOut.end(); ++it) {
 		transactionString = transactionString + std::to_string(it->getAmount()) + it->getOutSig();
 	}
 	transactionString = transactionString + std::to_string(timestamp);
@@ -58,7 +58,6 @@ void Transaction::setRecOut(std::vector<Record> recOut) {
 }
 
 void Transaction::setTimestamp() {
-	boost::posix_time::ptime time_t_local = boost::posix_time::second_clock::local_time();
-	boost::posix_time::ptime time_t_epoch(date(1970, 1, 1));
-	timestamp = time_t_local - time_t_epoch;
+	std::chrono::time_point<std::chrono::system_clock> p2 = std::chrono::system_clock::now();
+	timestamp = static_cast<unsigned long int> (std::chrono::duration_cast<std::chrono::seconds>(p2.time_since_epoch()).count());
 }

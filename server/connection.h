@@ -1,15 +1,15 @@
 #pragma once
 
+#include <iomanip>
+#include <string>
+#include <sstream>
+#include <vector>
 #include <boost/asio.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/tuple/tuple.hpp>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <vector>
 
 class Connection
 {
@@ -59,13 +59,13 @@ public:
 		else {
 			std::istringstream is(std::string(inboundHeader, 8));
 			std::size_t inboundDataSize = 0;
-			if (!(is >> std::hex >> inbound_data_size)) {
+			if (!(is >> std::hex >> inboundDataSize)) {
 				boost::system::error_code error(boost::asio::error::invalid_argument);
 				boost::get<0>(handler)(error);
 				return;
 			}
 			inboundData.resize(inboundDataSize);
-			void (Connection::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &Connection::handle_read_data<T, Handler>;
+			void (Connection::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &Connection::handleReadData<T, Handler>;
 			boost::asio::async_read(socket, boost::asio::buffer(inboundData), boost::bind(f, this, boost::asio::placeholders::error, boost::ref(t), handler));
 		}
 	}
