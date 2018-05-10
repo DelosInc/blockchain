@@ -70,9 +70,18 @@ Block Miner::mine() {
 }
 
 void Miner::verify(Transaction& transaction) {
-	if (verifyTransaction(transaction) && verifySig(transaction)) {
-		mutex.lock();
-		verifiedTransactions.push_back(transaction);
-		mutex.unlock();
+	if (verifyTransaction(transaction)) {
+		bool flag = true;
+		for(unsigned int i=0;i<transaction.getRecInSize();i++){
+			if (!verifySig(transaction.getRecIn(i).getInSig().pubKey,transaction.getRecIn(i).getInSig().concatenatedRecord,transaction.getRecIn(i).getInSig().sig)) {
+				flag = true;
+				break;
+			}
+		}
+		if (flag) {
+			mutex.lock();
+			verifiedTransactions.push_back(transaction);
+			mutex.unlock();
+		}
 	}
 }

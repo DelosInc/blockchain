@@ -16,6 +16,7 @@ private:
 	unsigned int nonce;
 	std::vector<Transaction> transactions;
 public:
+	Block() = default;
 	Block(unsigned int, std::string const&, std::vector<Transaction> const&);
 	unsigned int getHeight();
 	unsigned int getTimestamp();
