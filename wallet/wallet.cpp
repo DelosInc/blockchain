@@ -23,7 +23,7 @@ std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
 	for (std::list<Record>::iterator it = unspentOutputs.begin(); it != unspentOutputs.end(); ++it) {
 		if (amount > sum) {
 			std::string concatenatedRecord = std::to_string(it->getAmount()) + it->getOutSig();
-			it->setInSig(sign(keyPair.privateKey,concatenatedRecord), keyPair.publicKey);
+			it->setInSig(sign(keyPair.privateKey, concatenatedRecord), keyPair.publicKey, concatenatedRecord);
 			sum += it->getAmount();
 			recIn.push_back(*it);
 			unspentOutputs.pop_front();
@@ -39,7 +39,7 @@ std::vector<Record> Wallet::initialiseRecOut(unsigned long int amount, std::stri
 	std::vector<Record> recOut;
 	recOut[0].setAmount(amount);
 	recOut[0].setInSig(nullptr, nullptr);
-	recOut[0].setOutSig(address); //outgoing amount
+	recOut[0].setOutSig(address, concatenatedRecord); //outgoing amount
 	recOut[1].setAmount(getBalance() - amount);
 	recOut[1].setInSig(nullptr, nullptr);
 	recOut[1].setOutSig(getPubKeyHash()); //crediting change to self

@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)queueHandler;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

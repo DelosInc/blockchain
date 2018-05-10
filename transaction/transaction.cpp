@@ -35,7 +35,7 @@ unsigned int Transaction::getRecInSize() const {
 std::string Transaction::getTransactionString() const {
 	std::string transactionString;
 	for (std::vector<Record>::iterator it = recIn.begin(); it != recIn.end(); ++it){
-		transactionString = transactionString + std::to_string(it->getAmount()) + std::to_string(it->getInSig().sig)
+		transactionString = transactionString + std::to_string(it->getAmount()) + it->getInSig().sig
 			+ std::to_string(it->getInSig.pubKeyHash) + it->getOutSig();
 	}
 	for (std::vector<Record>::iterator it = recOut.begin(); it != recOut.end(); ++it) {
