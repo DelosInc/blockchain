@@ -8,10 +8,6 @@ Miner::Miner(std::string address, QueueHandler *currentQueue)
 
 }
 
-void Miner::addTransaction() {
-	unverifiedTransaction = currentQueue->getTransaction();
-}
-
 bool Miner::verifyTransaction() {
 	if ((unverifiedTransaction.getInSum() < unverifiedTransaction.getOutSum()) ||
 		unverifiedTransaction.getInSum() == 0 || unverifiedTransaction.getOutSum() == 0) {
@@ -37,13 +33,20 @@ bool Miner::verifySig() {
 }
 
 Block Miner::mine() {
-	while(verifiedTransactions.size!=5) {
-		if (verifyTransaction() && verifySig()) {
-			verifiedTransactions.push_back(unverifiedTransaction);
+	while (1) {
+		if (!currentQueue->isEmpty()) {
+			verifying.push_back(std::thread(&Miner::verify, this, currentQueue->getTransaction()));
 		}
-		addTransaction();
+		if (verifiedTransactions.size == 5) {
+			createBlock();
+		}
 	}
-	verifiedTransactions.push_back(coinbaseTransaction);
-	Block block = createBlock(verifiedTransactions);
-	return block;
+}
+
+void Miner::verify(Transaction& transaction) {
+	if (verifyTransaction(transaction) && verifySig(transaction)) {
+		mutex.lock();
+		verifiedTransactions.push_back(transaction);
+		mutex.unlock();
+	}
 }

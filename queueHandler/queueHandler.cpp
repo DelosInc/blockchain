@@ -15,3 +15,7 @@ Transaction QueueHandler::getTransaction() {
 		mutex.unlock();
 	}
 }
+
+bool QueueHandler::isEmpty() {
+	return pool.empty();
+}

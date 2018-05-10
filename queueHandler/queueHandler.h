@@ -8,6 +8,7 @@
 class QueueHandler {
 public:
 	void addToQueue(Transaction&);
+	bool isEmpty();
 	Transaction getTransaction();
 private:
 	std::queue <Transaction> pool;
