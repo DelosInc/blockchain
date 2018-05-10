@@ -9,8 +9,8 @@
 #include <pssr.h>
 #include <rsa.h>
 #include <sha.h>
-#include "record\record.h"
-#include "transaction\transaction.h"
+#include "record.h"
+#include "transaction.h"
 
 class Wallet {
 private:
@@ -30,5 +30,5 @@ public:
 	Wallet(leveldb::DB*);
 	void generateKeyPair();
 	unsigned long int getBalance() const;
-	Transaction send(std::string, unsigned long int);
+	Transaction initialiseTransaction(std::string, unsigned long int);
 };

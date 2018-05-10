@@ -1,5 +1,5 @@
 #include <iostream>
-#include "wallet\wallet.h"
+#include "wallet.h"
 
 std::string Wallet::sign(std::string privateKeyHex, std::string record) {
 	using Signer = CryptoPP::RSASS<CryptoPP::PSSR, CryptoPP::SHA256>::Signer;
@@ -15,6 +15,10 @@ std::string Wallet::sign(std::string privateKeyHex, std::string record) {
 			new CryptoPP::HexEncoder(
 				new CryptoPP::StringSink(signature)))); //sign
 	return signature;
+}
+
+std::string getPubKeyHash() {
+	
 }
 
 std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
@@ -65,7 +69,7 @@ unsigned long int Wallet::getBalance() const {
 	return balance;
 }
 
-Transaction Wallet::send(std::string address, unsigned long int amount) {
+Transaction Wallet::initialiseTransaction(std::string address, unsigned long int amount) {
 	transaction.setRecIn(initialiseRecIn(amount));
 	transaction.setRecOut(initialiseRecOut(amount, address));
 	transaction.setTimestamp();
