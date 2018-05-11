@@ -85,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)queueHandler;$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

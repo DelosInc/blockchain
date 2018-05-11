@@ -4,8 +4,14 @@
 #include <queue>
 #include <vector>
 #include <mutex>
-
+#include <stack>
+#include <hex.h>
+#include <osrng.h>
+#include <pssr.h>
+#include <rsa.h>
+#include <sha.h>
 #include "block.h"
+#include "record.h"
 #include "queueHandler.h"
 
 class Miner {
@@ -16,7 +22,7 @@ private:
 	bool verifyTransaction(Transaction);
 	bool checkSig(Record);
 	void verify(Transaction&);
-	bool verifySig(std::string pubkeyStringHex, std::string message, std::string signature);
+	bool verifySig(Record);
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
 	Block createBlock();
