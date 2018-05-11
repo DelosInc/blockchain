@@ -5,6 +5,7 @@
 #include <thread>
 
 #include "server.h"
+#include "blockchainHandler.h"
 #include "queueHandler.h"
 #include "miner.h"
 
@@ -21,8 +22,8 @@ void serving(unsigned short int port, QueueHandler *currentQueue) {
 	}
 }
 
-void mining(std::string address, QueueHandler *currentQueue) {
-	Miner miner(address, currentQueue);
+void mining(std::string address, QueueHandler *currentQueue, BlockchainHandler *handler) {
+	Miner miner(address, currentQueue, handler);
 	std::cout << "Enter N to stop";
 	while (run) {
 		miner.mine();
@@ -36,6 +37,7 @@ void control() {
 }
 
 int main() {
+	BlockchainHandler handler;
 	QueueHandler currentQueue;
 	unsigned short int port;
 	std::string address;
@@ -46,7 +48,7 @@ int main() {
 	run = true;
 	std::thread servingThread(serving, port, &currentQueue);
 	std::thread controlThread(control);
-	std::thread miningThread(mining, address, &currentQueue);
+	std::thread miningThread(mining, address, &currentQueue, &handler);
 	servingThread.join();
 	controlThread.join();
 	miningThread.join();

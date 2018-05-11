@@ -9,7 +9,7 @@ Server::Server(boost::asio::io_context& io_context, unsigned short port, QueueHa
 
 void Server::handleAccept(const boost::system::error_code& e, boost::shared_ptr<Connection> conn) {
 	if (!e) {
-		conn->asyncRead(transaction, boost::bind(&QueueHandler::addToQueue, currentQueue, boost::asio::placeholders::error));
+		conn->asyncRead(transaction, boost::bind(&QueueHandler::addToQueue, currentQueue, transaction));
 	}
 	boost::shared_ptr<Connection> new_conn(new Connection(acceptor.get_io_context()));
 	acceptor.async_accept(new_conn->getSocket(), boost::bind(&Server::handleAccept, this, boost::asio::placeholders::error, new_conn));

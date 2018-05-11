@@ -32,8 +32,8 @@ public:
 		archive << t;
 		outboundData = archiveStream.str();
 		std::ostringstream headerStream;
-		headerStream << std::setw(header_length) << std::hex << outboundData.size();
-		if (!headerStream || headerStream.str().size() != header_length) {
+		headerStream << std::setw(8) << std::hex << outboundData.size();
+		if (!headerStream || headerStream.str().size() != 8) {
 			boost::system::error_code error(boost::asio::error::invalid_argument);
 			boost::asio::post(socket.get_executor(), boost::bind(handler, error));
 			return;

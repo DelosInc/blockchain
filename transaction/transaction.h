@@ -24,4 +24,11 @@ public:
 	void setRecIn(std::vector<Record>);
 	void setRecOut(std::vector<Record>);
 	void setTimestamp();
+	template <typename Archive>
+	void serialize(Archive& ar, const unsigned int version) {
+		ar & TID;
+		ar & recIn;
+		ar & recOut;
+		ar & timestamp;
+	}
 };

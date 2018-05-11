@@ -18,4 +18,12 @@ public:
 	void setInSig(std::string, std::string, std::string);
 	std::string getOutSig() const;
 	void setOutSig(std::string);
+	template <typename Archive>
+	void serialize(Archive& ar, const unsigned int version) {
+		ar & amount;
+		ar & inSig.sig;
+		ar & inSig.pubKey;
+		ar & inSig.concatenatedRecord;
+		ar & outSig;
+	}
 };
