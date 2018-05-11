@@ -23,10 +23,6 @@ std::string Block::getBlockHash() {
 	return blockHash;
 }
 
-std::string Block::getMerkleRoot() {
-	return merkleRoot;
-}
-
 Transaction Block::getTransaction(unsigned int index) {
 	return transactions[index];
 }
@@ -50,14 +46,6 @@ void Block::setPrevBlockHash(std::string const& prevBlockHash) {
 
 void Block::setBlockHash(std::string const& blockHash) {
 	this->blockHash = blockHash;
-}
-
-void Block::setMerkleRoot(std::string const& merkleRoot) {
-	this->merkleRoot = merkleRoot;
-}
-
-void Block::setNonce(unsigned int nonce) {
-	this->nonce = nonce;
 }
 
 void Block::setTransaction(Transaction const& transaction, unsigned int index) {

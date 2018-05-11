@@ -13,19 +13,22 @@
 #include "block.h"
 #include "record.h"
 #include "queueHandler.h"
+#include "blockchainHandler.h"
 
 class Miner {
 private:
 	std::string address;
 	QueueHandler *currentQueue;
+	BlockchainHandler* handler;
 	std::mutex mutex;
 	bool verifyTransaction(Transaction);
 	bool checkSig(Record);
 	void verify(Transaction&);
 	bool verifySig(Record);
+	std::string computeHash();
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
-	Block createBlock();
+	void createBlock();
 public:
 	Miner(std::string, QueueHandler*);
 	Block mine();

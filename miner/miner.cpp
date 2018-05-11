@@ -71,6 +71,7 @@ Block Miner::mine() {
 		}
 		if (verifiedTransactions.size == 5) {
 			createBlock();
+			break;
 		}
 	}
 }
@@ -90,4 +91,31 @@ void Miner::verify(Transaction& transaction) {
 			mutex.unlock();
 		}
 	}
+}
+
+std::string Miner::computeHash() {
+	
+}
+
+void Miner::createBlock() {
+	Block block;
+	block.setTransaction(verifiedTransactions);
+	block.setHeight(handler->getHeight() + 1);
+	block.setPrevBlockHash(handler->getBlockHash());
+	block.setTimestamp();
+
+	std::string transactionsString;
+	for (std::vector<Transaction>::iterator it = verifiedTransactions.begin(); it != verifiedTransactions.end(); ++it) {
+		transactionsString += it->getTransactionString();
+	}
+
+	CryptoPP::SHA256 hash;
+	std::string blockString = std::to_string(block.getHeight()) + std::to_string(block.getTimestamp()) + 
+		block.getPrevBlockHash + transactionsString;
+	std::string digest;
+	CryptoPP::StringSource s(blockString, true, new CryptoPP::HashFilter(hash, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
+	
+	block.setBlockHash(digest);
+
+	handler->addBlock(block);
 }
