@@ -15,6 +15,9 @@ class BlockchainHandler
 public:
 	BlockchainHandler();
 	void addBlock(Block const&);
+	Block getBlock(unsigned int height);
+	unsigned int getHeight();
+	std::string getBlockHash();
 	~BlockchainHandler();
 private:
 	leveldb::DB* db;
@@ -22,7 +25,6 @@ private:
 	leveldb::Status status;
 	std::string height;
 	std::list <Block> blockchain;
-	Block getBlock(unsigned int height);
 	void initList(unsigned int=1);
 };
 

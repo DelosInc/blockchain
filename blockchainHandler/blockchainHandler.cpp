@@ -43,3 +43,15 @@ void BlockchainHandler::initList(unsigned int height) {
 		blockchain.push_back(getBlock(stoi(it->key().ToString())));
 	}
 }
+
+unsigned int BlockchainHandler::getHeight() {
+	leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
+	it->SeekToLast();
+	return stoi(it->key().ToString());
+}
+
+std::string BlockchainHandler::getBlockHash() {
+	leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
+	it->SeekToLast();
+	return getBlock(stoi(it->key().ToString())).getBlockHash();
+}

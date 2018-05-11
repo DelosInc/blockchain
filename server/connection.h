@@ -84,6 +84,7 @@ public:
 				archive >> t;
 			}
 			catch (std::exception& e) {
+				(void)e;
 				boost::system::error_code error(boost::asio::error::invalid_argument);
 				boost::get<0>(handler)(error);
 				return;
