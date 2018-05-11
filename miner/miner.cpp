@@ -1,9 +1,10 @@
 #include "Miner.h"
 
 
-Miner::Miner(std::string address, QueueHandler *currentQueue)
+Miner::Miner(std::string address, QueueHandler *currentQueue, BlockchainHandler *handler)
 	:address(address),
-	currentQueue(currentQueue) {
+	currentQueue(currentQueue),
+	handler(handler) {
 
 }
 
