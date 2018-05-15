@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\leveldb\include;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\db-6.2.32\build_windows;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -126,9 +126,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="blockchainHandler.h" />
+    <ClInclude Include="DB.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blockchainHandler.cpp" />
+    <ClCompile Include="DB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\block\block.vcxproj">

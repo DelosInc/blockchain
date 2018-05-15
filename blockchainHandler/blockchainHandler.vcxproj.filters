@@ -18,9 +18,15 @@
     <ClInclude Include="blockchainHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blockchainHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

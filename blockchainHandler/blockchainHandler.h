@@ -6,12 +6,16 @@
 #include <list>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
-#include <leveldb/db.h>
 
+#include "DB.h"
 #include "block.h"
 
-class BlockchainHandler
-{
+class BlockchainHandler {
+private:
+	DB db;
+	std::string height;
+	std::list <Block> blockchain;
+	void initList(unsigned int = 1);
 public:
 	BlockchainHandler();
 	void addBlock(Block const&);
@@ -19,12 +23,6 @@ public:
 	unsigned int getHeight();
 	std::string getBlockHash();
 	~BlockchainHandler();
-private:
-	leveldb::DB* db;
-	leveldb::Options options;
-	leveldb::Status status;
-	std::string height;
-	std::list <Block> blockchain;
-	void initList(unsigned int=1);
+
 };
 
