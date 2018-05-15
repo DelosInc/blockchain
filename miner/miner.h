@@ -30,6 +30,6 @@ private:
 	std::vector<std::thread> verifying;
 	void createBlock();
 public:
-	Miner(std::string, QueueHandler*);
+	Miner(std::string, QueueHandler*, BlockchainHandler*);
 	Block mine();
 };
