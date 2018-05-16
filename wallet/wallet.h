@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 #include <list>
-#include <leveldb\db.h>
 #include <hex.h>
 #include <osrng.h>
 #include <pssr.h>
@@ -11,6 +10,7 @@
 #include <sha.h>
 #include "record.h"
 #include "transaction.h"
+#include "blockchainHandler.h"
 
 class Wallet {
 private:
@@ -27,7 +27,7 @@ private:
 	std::vector<Record> initialiseRecOut(unsigned long int, std::string);
 	std::string initialiseTID();
 public:
-	Wallet(leveldb::DB*);
+	Wallet();
 	void generateKeyPair();
 	unsigned long int getBalance() const;
 	Transaction initialiseTransaction(std::string, unsigned long int);

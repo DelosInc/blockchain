@@ -85,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\leveldb;C:\cryptopp700;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)client;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\leveldb;C:\cryptopp700;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)client;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;C:\leveldb\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

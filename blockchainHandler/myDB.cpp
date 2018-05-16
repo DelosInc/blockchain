@@ -1,8 +1,8 @@
-#include "DB.h"
+#include "myDB.h"
 
 
 
-DB::DB(std::string path, std::string dbFileName)
+myDB::myDB(std::string path, std::string dbFileName)
 	: db(NULL, 0),
 	dbFileName(path + dbFileName),
 	cFlags(DB_CREATE) {
@@ -20,16 +20,16 @@ DB::DB(std::string path, std::string dbFileName)
 	}
 }
 
-void DB::write(std::string keystr, std::string datastr) {
-	Dbt key(&keystr, keystr.size());
-	Dbt data(&datastr, datastr.size());
+void myDB::write(unsigned int height, Block block) {
+	Dbt key(&height, sizeof(height));
+	Dbt data(&block, sizeof(block));
 	int ret = db.put(NULL, &key, &data, DB_NOOVERWRITE);
 	if (ret == DB_KEYEXIST) {
-		db.err(ret, "Write failed since key already exists", keystr);
+		db.err(ret, "Write failed since key already exists");
 	}
 }
 
-void DB::close() {
+void myDB::close() {
 	try {
 		db.close(0);
 		std::cout << "Database closed";
@@ -45,6 +45,6 @@ void DB::close() {
 }
 
 
-DB::~DB() {
+myDB::~myDB() {
 	close();
 }
