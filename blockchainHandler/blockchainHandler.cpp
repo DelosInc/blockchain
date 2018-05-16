@@ -1,38 +1,44 @@
 #include "BlockchainHandler.h"
 
-BlockchainHandler::BlockchainHandler() {
-	
 
-	/*options.create_if_missing = true;
-	status = leveldb::DB::Open(options, "/testdb", &db);
-	assert(status.ok());
-	initList(1);*/
+BlockchainHandler::BlockchainHandler(std::string path, std::string filename)
+	: db(NULL, 0),
+	dbFileName(path + dbFileName),
+	cFlags(DB_CREATE) {
+	try {
+		db.set_error_stream(&std::cerr);
+		db.open(NULL, dbFileName.c_str(), NULL, DB_QUEUE, cFlags, 0);
+	}
+	catch (DbException &e) {
+		std::cerr << "Error opening database\n";
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cerr << "Error opening database\n";
+		std::cerr << e.what() << std::endl;
+	}
+	Dbc *iterator;
+	Dbt key, value;
+	db.cursor(NULL, &iterator, 0);
+	iterator->get(&key, &value, DB_LAST);
+	height = *static_cast<int*> (key.get_data());
 }
 
 void BlockchainHandler::addBlock(Block const& block) {
 	height++;
-	db.write(height, block);
-	/*std::ostringstream archiveStream;
-	boost::archive::text_oarchive archive(archiveStream);
-	archive << block;
-	if (status.ok()) {
-		leveldb::WriteOptions write_options;
-		write_options.sync = true;
-		status = db->Put(leveldb::WriteOptions(), height, archiveStream.str());
+	Dbt key(&height, sizeof(height));
+	Dbt value(static_cast<void*> (const_cast<Block*> (&block)), sizeof(block));
+	int ret = db.put(NULL, &key, &value, DB_NOOVERWRITE);
+	if (ret == DB_KEYEXIST) {
+		db.err(ret, "Write failed since key already exists");
 	}
-	blockchain.push_back(block);
-	height = std::to_string(stoi(height) + 1);*/
-
 }
 
 Block BlockchainHandler::getBlock(unsigned int height) {
-	/*std::string archiveData;
-	std::istringstream archiveStream(archiveData);
-	boost::archive::text_iarchive archive(archiveStream);
-	status = db->Get(leveldb::ReadOptions(), std::to_string(height), &archiveData);
-	Block block;
-	archive >> block;
-	return block;*/
+	Dbt key(&height, sizeof(height)), value;
+	db.get(NULL, &key, &value, 0);
+	Block *block = reinterpret_cast<Block*> (value.get_data());
+	return *block;
 }
 
 unsigned int BlockchainHandler::getHeight() {
@@ -40,9 +46,23 @@ unsigned int BlockchainHandler::getHeight() {
 }
 
 std::string BlockchainHandler::getBlockHash() {
+	Dbt key(&height, sizeof(height)), value;
+	db.get(NULL, &key, &value, 0);
+	Block *block = reinterpret_cast<Block*> (value.get_data());
+	return block->getBlockHash();
+}
 
-
-	/*leveldb::Iterator* it = db->NewIterator(leveldb::ReadOptions());
-	it->SeekToLast();
-	return getBlock(stoi(it->key().ToString())).getBlockHash();*/
+BlockchainHandler::~BlockchainHandler() {
+	try {
+		db.close(0);
+		std::cout << "Database closed";
+	}
+	catch (DbException &e) {
+		std::cerr << "Error closing database\n";
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cerr << "Error closing database\n";
+		std::cerr << e.what() << std::endl;
+	}
 }

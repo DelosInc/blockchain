@@ -126,11 +126,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="blockchainHandler.h" />
-    <ClInclude Include="myDB.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blockchainHandler.cpp" />
-    <ClCompile Include="myDB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\block\block.vcxproj">
