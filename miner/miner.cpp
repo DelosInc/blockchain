@@ -94,10 +94,6 @@ void Miner::verify(Transaction& transaction) {
 	}
 }
 
-std::string Miner::computeHash() {
-	
-}
-
 void Miner::createBlock() {
 	Block block;
 	block.setTransaction(verifiedTransactions);

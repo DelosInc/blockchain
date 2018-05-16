@@ -25,7 +25,6 @@ private:
 	bool checkSig(Record);
 	void verify(Transaction&);
 	bool verifySig(Record);
-	std::string computeHash();
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
 	void createBlock();
