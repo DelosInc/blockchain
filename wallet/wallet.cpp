@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "client.h"
 #include "wallet.h"
 
 

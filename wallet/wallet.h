@@ -14,6 +14,7 @@
 #include "record.h"
 #include "transaction.h"
 #include "block.h"
+#include "client.h"
 #include "blockchainHandler.h"
 
 class Wallet {

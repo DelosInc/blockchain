@@ -1,8 +1,8 @@
-#include <boost/asio.hpp>
-#include <boost/bind.hpp>
 #include <iostream>
 #include <string>
 #include <thread>
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
 
 #include "server.h"
 #include "blockchainHandler.h"

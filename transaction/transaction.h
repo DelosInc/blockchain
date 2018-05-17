@@ -6,6 +6,7 @@
 #include <sha.h>
 #include <osrng.h>
 #include <hex.h>
+
 #include "record.h"
 
 class Transaction {

@@ -1,6 +1,5 @@
 #include "BlockchainHandler.h"
 
-
 BlockchainHandler::BlockchainHandler(std::string path, std::string filename)
 	: db(NULL, 0),
 	dbFileName(path + dbFileName),
