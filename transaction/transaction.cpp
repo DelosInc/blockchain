@@ -4,11 +4,11 @@ std::string Transaction::getTID() const {
 	return TID;
 }
 
-Record const& Transaction::getRecIn(unsigned int index) const {
+Record Transaction::getRecIn(unsigned int index) const {
 	return recIn[index];
 }
 
-Record const& Transaction::getRecOut(unsigned int index) const {
+Record Transaction::getRecOut(unsigned int index) const {
 	return recOut[index];
 }
 
@@ -45,8 +45,12 @@ std::string Transaction::getTransactionString() const {
 	return transactionString;
 }
 
-void Transaction::setTID(std::string TID) {
-	this->TID = TID;
+void Transaction::setTID() {
+	CryptoPP::SHA256 hash;
+	std::string transactionString = getTransactionString();
+	std::string digest;
+	CryptoPP::StringSource s(transactionString, true, new CryptoPP::HashFilter(hash, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
+	this->TID = digest;
 }
 
 void Transaction::setRecIn(std::vector<Record> recIn) {

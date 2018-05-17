@@ -25,3 +25,14 @@ std::string Record::getOutSig() const {
 void Record::setOutSig(std::string outSig) {
 	this->outSig = outSig;
 }
+
+bool Record::operator == (Record record) {
+	if (this->amount == record.amount &&
+		this->inSig.concatenatedRecord == record.inSig.concatenatedRecord &&
+		this->inSig.pubKey == record.inSig.pubKey &&
+		this->inSig.sig == record.inSig.sig &&
+		this->outSig == record.outSig) {
+		return true;
+	}
+	return false;
+}

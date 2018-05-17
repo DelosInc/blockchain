@@ -13,6 +13,7 @@
 #include "block.h"
 #include "record.h"
 #include "queueHandler.h"
+#include "coinbaseTransaction.h"
 #include "blockchainHandler.h"
 
 class Miner {
@@ -27,6 +28,7 @@ private:
 	bool verifySig(Record);
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
+	Transaction coinbase();
 	void createBlock();
 public:
 	Miner(std::string, QueueHandler*, BlockchainHandler*);

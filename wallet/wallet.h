@@ -25,7 +25,6 @@ private:
 	std::string getPubKeyHash();
 	std::vector<Record> initialiseRecIn(unsigned long int);
 	std::vector<Record> initialiseRecOut(unsigned long int, std::string);
-	std::string initialiseTID();
 public:
 	Wallet();
 	void generateKeyPair();

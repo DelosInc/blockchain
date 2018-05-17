@@ -19,8 +19,12 @@ std::string Wallet::sign(std::string privateKeyHex, std::string record) {
 	return signature;
 }
 
-std::string getPubKeyHash() {
-	
+std::string Wallet::getPubKeyHash() {
+	CryptoPP::SHA256 hash;
+	std::string pubKey = keyPair.publicKey;
+	std::string digest;
+	CryptoPP::StringSource s(pubKey, true, new CryptoPP::HashFilter(hash, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
+	return digest;
 }
 
 std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
@@ -52,10 +56,6 @@ std::vector<Record> Wallet::initialiseRecOut(unsigned long int amount, std::stri
 	return recOut;
 }
 
-std::string Wallet::initialiseTID() {
-	return sign(keyPair.privateKey, transaction.getTransactionString());
-}
-
 void Wallet::generateKeyPair() {
 	CryptoPP::AutoSeededRandomPool rng; //random pool generator
 
@@ -75,7 +75,7 @@ Transaction Wallet::initialiseTransaction(std::string address, unsigned long int
 	transaction.setRecIn(initialiseRecIn(amount));
 	transaction.setRecOut(initialiseRecOut(amount, address));
 	transaction.setTimestamp();
-	transaction.setTID(initialiseTID());
+	transaction.setTID();
 	return transaction;
 }
 

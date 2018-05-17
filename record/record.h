@@ -26,4 +26,5 @@ public:
 		ar & inSig.concatenatedRecord;
 		ar & outSig;
 	}
+	bool operator == (Record);
 };

@@ -1,6 +1,5 @@
 #include "Miner.h"
 
-
 Miner::Miner(std::string address, QueueHandler *currentQueue, BlockchainHandler *handler)
 	:address(address),
 	currentQueue(currentQueue),
@@ -18,7 +17,7 @@ bool Miner::verifyTransaction(Transaction transaction) {
 			for (int verified_i = 0; verified_i < verifiedTransactions.size(); verified_i++) {
 				for (int recOut_j = 0; recOut_j < 2; recOut_j++) {
 					if (transaction.getRecIn(recIn_i) ==
-						verifiedTransactions[verified_i].getRecOut[recOut_j]) {
+						verifiedTransactions[verified_i].getRecOut(recOut_j)) {
 						return false;
 					}
 				}
@@ -94,8 +93,22 @@ void Miner::verify(Transaction& transaction) {
 	}
 }
 
+Transaction Miner::coinbase() {
+	Transaction cb;
+	Record cbRecord;
+	cbRecord.setAmount(10);
+	cbRecord.setInSig(nullptr, nullptr, nullptr);
+	cbRecord.setOutSig(address);
+	cb.setRecIn(std::vector<Record>());
+	std::vector<Record> recout;
+	recout.push_back(cbRecord);
+	cb.setRecOut(recout);
+	return cb;
+}
+
 void Miner::createBlock() {
 	Block block;
+	verifiedTransactions.push_back(coinbase());
 	block.setTransaction(verifiedTransactions);
 	block.setHeight(handler->getHeight() + 1);
 	block.setPrevBlockHash(handler->getBlockHash());
