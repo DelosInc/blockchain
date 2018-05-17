@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <queue>
 #include <string>
 #include <list>
 #include <hex.h>
@@ -8,8 +9,11 @@
 #include <pssr.h>
 #include <rsa.h>
 #include <sha.h>
+#include <db_cxx.h>
+
 #include "record.h"
 #include "transaction.h"
+#include "block.h"
 #include "blockchainHandler.h"
 
 class Wallet {
@@ -18,15 +22,15 @@ private:
 		std::string privateKey;
 		std::string publicKey;
 	} keyPair;
-	std::list<Record> unspentOutputs; //constructor
-	unsigned long int balance; //constructor
+	std::list<Record> unspentOutputs;
+	unsigned long int balance;
 	Transaction transaction;
 	std::string sign(std::string, std::string);
 	std::string getPubKeyHash();
 	std::vector<Record> initialiseRecIn(unsigned long int);
 	std::vector<Record> initialiseRecOut(unsigned long int, std::string);
 public:
-	Wallet();
+	Wallet(BlockchainHandler*);
 	void generateKeyPair();
 	unsigned long int getBalance() const;
 	Transaction initialiseTransaction(std::string, unsigned long int);

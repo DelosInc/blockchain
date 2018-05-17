@@ -3,6 +3,41 @@
 #include "client.h"
 #include "wallet.h"
 
+
+Wallet::Wallet(BlockchainHandler *handler) {
+	Block current;
+	balance = 0;
+	//get address
+	std::vector <Record> ownInputs;
+	std::queue <Record> ownOutputs;
+	for (unsigned int height = handler->getHeight(); height >= 1; height--) {
+		current = handler->getBlock(height);
+		for (unsigned int tx_i = 0; tx_i < 6; tx_i++) {
+			for (unsigned int recOut_i = 0; recOut_i < 2; recOut_i++) {
+				if (current.getTransaction(tx_i).getRecOut(recOut_i).getOutSig().compare(keyPair.publicKey) == 0) {
+					ownOutputs.push(current.getTransaction(tx_i).getRecOut(recOut_i));
+				}
+			}
+			for (unsigned int recIn_i = 0; recIn_i < current.getTransaction(tx_i).getRecInSize(); recIn_i++) {
+				if (current.getTransaction(tx_i).getRecIn(recIn_i).getInSig().pubKey.compare(keyPair.publicKey) == 0) {
+					ownInputs.push_back(current.getTransaction(tx_i).getRecIn(recIn_i));
+				}
+			}
+		}
+	}
+	while (!ownOutputs.empty()) {
+		for (std::vector<Record>::iterator it = ownInputs.begin(); it != ownInputs.end(); it++) {
+			if (*it == ownOutputs.front()) {
+				ownOutputs.pop();
+				break;
+			}
+		balance += ownOutputs.front().getAmount();
+		unspentOutputs.push_back(ownOutputs.front());
+		ownOutputs.pop();
+		}
+	}
+}
+
 std::string Wallet::sign(std::string privateKeyHex, std::string record) {
 	using Signer = CryptoPP::RSASS<CryptoPP::PSSR, CryptoPP::SHA256>::Signer;
 
@@ -80,8 +115,11 @@ Transaction Wallet::initialiseTransaction(std::string address, unsigned long int
 }
 
 int main() {
-	leveldb::DB* db;
-	Wallet w(db);
+	std::string path, filename;
+	std::cout << "Enter filename and path";
+	std::cin >> path >> filename;
+	BlockchainHandler handler(path, filename);
+	Wallet w(&handler);
 	unsigned long int balance = w.getBalance();
 	unsigned long int amount;
 	std::string outputAddress;

@@ -37,7 +37,10 @@ void control() {
 }
 
 int main() {
-	BlockchainHandler handler;
+	std::string path, filename;
+	std::cout << "Enter filename and path";
+	std::cin >> path >> filename;
+	BlockchainHandler handler(path, filename);
 	QueueHandler currentQueue;
 	unsigned short int port;
 	std::string address;

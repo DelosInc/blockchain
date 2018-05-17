@@ -85,7 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)client;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\cryptopp700;C:\db-6.2.32\build_windows;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)client;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;C:\leveldb\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -128,6 +128,12 @@
     <ClCompile Include="wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\blockchainHandler\blockchainHandler.vcxproj">
+      <Project>{1231840f-2967-4ec7-8a08-d1766cb40045}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\block\block.vcxproj">
+      <Project>{cc5e9094-70d5-4bd1-97af-e052eeb46e4a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\client\client.vcxproj">
       <Project>{bd7d8fa8-d920-4fc4-8293-7f7e4f56d357}</Project>
     </ProjectReference>
