@@ -81,6 +81,7 @@
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Debug;C:\db-6.2.32\build_windows\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libdb62d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

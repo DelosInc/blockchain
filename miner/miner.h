@@ -24,7 +24,7 @@ private:
 	std::mutex mutex;
 	bool verifyTransaction(Transaction);
 	bool checkSig(Record);
-	void verify(Transaction&);
+	void verify(Transaction);
 	bool verifySig(Record);
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
@@ -32,5 +32,5 @@ private:
 	void createBlock();
 public:
 	Miner(std::string, QueueHandler*, BlockchainHandler*);
-	Block mine();
+	void mine();
 };

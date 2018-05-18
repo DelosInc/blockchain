@@ -58,7 +58,7 @@ bool Miner::verifySig(Record record) {
 	return result;
 }
 
-Block Miner::mine() {
+void Miner::mine() {
 	for (std::vector<std::thread>::iterator it = verifying.begin(); it != verifying.end(); ++it) {
 		if (it->joinable()) {
 			it->join();
@@ -76,7 +76,7 @@ Block Miner::mine() {
 	}
 }
 
-void Miner::verify(Transaction& transaction) {
+void Miner::verify(Transaction transaction) {
 	if (verifyTransaction(transaction)) {
 		bool flag = true;
 		for(unsigned int i=0;i<transaction.getRecInSize();i++){
