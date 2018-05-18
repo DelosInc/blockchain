@@ -77,9 +77,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\db-6.2.32\build_windows;C:\cryptopp700;$(SolutionDir)record;$(SolutionDir)transaction;$(SolutionDir)block;$(SolutionDir)client;$(SolutionDir)blockchainHandler;$(SolutionDir)connection;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\db-6.2.32\build_windows\Win32\Debug;C:\cryptopp700\Win32\Output\Debug;C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cryptlib.lib;libdb62d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
