@@ -30,9 +30,9 @@ Wallet::Wallet(BlockchainHandler *handler) {
 				ownOutputs.pop();
 				break;
 			}
-		balance += ownOutputs.front().getAmount();
-		unspentOutputs.push_back(ownOutputs.front());
-		ownOutputs.pop();
+			balance += ownOutputs.front().getAmount();
+			unspentOutputs.push_back(ownOutputs.front());
+			ownOutputs.pop();
 		}
 	}
 }

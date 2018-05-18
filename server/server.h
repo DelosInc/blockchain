@@ -2,7 +2,7 @@
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
-#include "Connection.h"
+#include "connection.h"
 #include <boost/serialization/vector.hpp>
 
 #include "transaction.h"

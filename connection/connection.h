@@ -11,10 +11,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/tuple/tuple.hpp>
 
-class Connection
-{
+class Connection {
 public:
-
 	Connection(boost::asio::io_context& io_context)
 		: socket(io_context) {
 
@@ -25,8 +23,7 @@ public:
 	}
 
 	template <typename T, typename Handler>
-	void asyncWrite(const T& t, Handler handler)
-	{
+	void asyncWrite(const T& t, Handler handler) {
 		std::ostringstream archiveStream;
 		boost::archive::text_oarchive archive(archiveStream);
 		archive << t;
@@ -71,8 +68,7 @@ public:
 	}
 
 	template <typename T, typename Handler>
-	void handleReadData(const boost::system::error_code& e, T& t, boost::tuple<Handler> handler)
-	{
+	void handleReadData(const boost::system::error_code& e, T& t, boost::tuple<Handler> handler) {
 		if (e) {
 			boost::get<0>(handler)(e);
 		}

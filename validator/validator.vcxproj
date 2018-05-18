@@ -76,8 +76,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\db-6.2.32\build_windows;C:\cryptopp700;C:\boost_1_67_0;$(SolutionDir)blockchainHandler;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\db-6.2.32\build_windows;C:\cryptopp700;C:\boost_1_67_0;$(SolutionDir)blockchainHandler;$(SolutionDir)connection;$(SolutionDir)server;$(SolutionDir)miner;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\db-6.2.32\build_windows\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
