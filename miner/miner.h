@@ -14,7 +14,6 @@
 #include "block.h"
 #include "record.h"
 #include "queueHandler.h"
-#include "coinbaseTransaction.h"
 #include "blockchainHandler.h"
 
 class Miner {

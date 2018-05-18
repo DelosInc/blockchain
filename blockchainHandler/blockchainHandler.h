@@ -16,6 +16,7 @@ private:
 	unsigned int height;
 public:
 	BlockchainHandler(std::string, std::string);
+	~BlockchainHandler();
 	void addBlock(Block const&);
 	Block getBlock(unsigned int height);
 	unsigned int getHeight();

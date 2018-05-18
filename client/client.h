@@ -4,7 +4,7 @@
 #include <boost/bind.hpp>
 #include <iostream>
 #include <vector>
-#include "Connection.h"
+#include "connection.h"
 #include <boost/serialization/vector.hpp>
 
 #include "transaction.h"

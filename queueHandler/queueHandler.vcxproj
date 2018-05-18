@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -123,17 +123,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="queueException.h" />
     <ClInclude Include="queueHandler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="queueException.cpp" />
     <ClCompile Include="queueHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

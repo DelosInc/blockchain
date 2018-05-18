@@ -3,6 +3,7 @@
 #include <queue>
 #include <mutex>
 
+#include "queueException.h"
 #include "transaction.h"
 
 class QueueHandler {

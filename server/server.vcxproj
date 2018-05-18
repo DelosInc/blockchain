@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)queueHandler;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)queueHandler;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

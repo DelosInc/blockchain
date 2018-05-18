@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\db-6.2.32\build_windows;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\db-6.2.32\build_windows;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -138,7 +138,7 @@
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

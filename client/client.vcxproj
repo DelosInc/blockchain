@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)server;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)server;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -144,7 +144,7 @@
       <Project>{c7e91b46-3d0e-4646-84ab-0ab667f42f81}</Project>
     </ProjectReference>
     <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

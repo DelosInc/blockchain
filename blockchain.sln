@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "record", "record\record.vcxproj", "{AD4B50BA-5AB1-4BD2-ADA8-4FDEBD095D4D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "transaction", "transaction\transaction.vcxproj", "{41B26468-837B-450C-B159-18E21567966A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "block", "block\block.vcxproj", "{CC5E9094-70D5-4BD1-97AF-E052EEB46E4A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "miner", "miner\miner.vcxproj", "{96D7292D-0B57-43A4-A108-EC943D583E09}"
@@ -22,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wallet", "wallet\wallet.vcxproj", "{C0A7C565-F813-48B6-9F34-5AD8F3AE4EA4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queueHandler", "queueHandler\queueHandler.vcxproj", "{02E51BA1-563A-490D-87D8-2DB421B6FCE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "transaction", "transaction\transaction.vcxproj", "{D26B066A-314F-4339-88C1-E3512F88CADB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +39,6 @@ Global
 		{AD4B50BA-5AB1-4BD2-ADA8-4FDEBD095D4D}.Release|x64.Build.0 = Release|x64
 		{AD4B50BA-5AB1-4BD2-ADA8-4FDEBD095D4D}.Release|x86.ActiveCfg = Release|Win32
 		{AD4B50BA-5AB1-4BD2-ADA8-4FDEBD095D4D}.Release|x86.Build.0 = Release|Win32
-		{41B26468-837B-450C-B159-18E21567966A}.Debug|x64.ActiveCfg = Debug|x64
-		{41B26468-837B-450C-B159-18E21567966A}.Debug|x64.Build.0 = Debug|x64
-		{41B26468-837B-450C-B159-18E21567966A}.Debug|x86.ActiveCfg = Debug|Win32
-		{41B26468-837B-450C-B159-18E21567966A}.Debug|x86.Build.0 = Debug|Win32
-		{41B26468-837B-450C-B159-18E21567966A}.Release|x64.ActiveCfg = Release|x64
-		{41B26468-837B-450C-B159-18E21567966A}.Release|x64.Build.0 = Release|x64
-		{41B26468-837B-450C-B159-18E21567966A}.Release|x86.ActiveCfg = Release|Win32
-		{41B26468-837B-450C-B159-18E21567966A}.Release|x86.Build.0 = Release|Win32
 		{CC5E9094-70D5-4BD1-97AF-E052EEB46E4A}.Debug|x64.ActiveCfg = Debug|x64
 		{CC5E9094-70D5-4BD1-97AF-E052EEB46E4A}.Debug|x64.Build.0 = Debug|x64
 		{CC5E9094-70D5-4BD1-97AF-E052EEB46E4A}.Debug|x86.ActiveCfg = Debug|Win32
@@ -111,6 +103,14 @@ Global
 		{02E51BA1-563A-490D-87D8-2DB421B6FCE5}.Release|x64.Build.0 = Release|x64
 		{02E51BA1-563A-490D-87D8-2DB421B6FCE5}.Release|x86.ActiveCfg = Release|Win32
 		{02E51BA1-563A-490D-87D8-2DB421B6FCE5}.Release|x86.Build.0 = Release|Win32
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Debug|x64.ActiveCfg = Debug|x64
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Debug|x64.Build.0 = Debug|x64
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Debug|x86.ActiveCfg = Debug|Win32
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Debug|x86.Build.0 = Debug|Win32
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Release|x64.ActiveCfg = Release|x64
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Release|x64.Build.0 = Release|x64
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Release|x86.ActiveCfg = Release|Win32
+		{D26B066A-314F-4339-88C1-E3512F88CADB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

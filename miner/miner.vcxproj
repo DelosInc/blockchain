@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)coinbaseTransaction;$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler;$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\db-6.2.32\build_windows;$(SolutionDir)coinbaseTransaction;$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler;$(SolutionDir)server</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -141,7 +141,7 @@
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

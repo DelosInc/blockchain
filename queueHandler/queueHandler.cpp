@@ -14,6 +14,7 @@ Transaction QueueHandler::getTransaction() {
 		return toBeMined;
 		mutex.unlock();
 	}
+	throw QueueEmpty();
 }
 
 bool QueueHandler::isEmpty() {

@@ -18,9 +18,15 @@
     <ClInclude Include="queueHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="queueException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="queueHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="queueException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
