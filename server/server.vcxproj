@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)queueHandler;$(SolutionDir)record;$(SolutionDir)connection</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -102,7 +102,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)record</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;$(SolutionDir)transaction;$(SolutionDir)queueHandler;$(SolutionDir)record</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -131,18 +131,20 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="connection.h" />
     <ClInclude Include="server.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="server.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\queueHandler\queueHandler.vcxproj">
+      <Project>{02e51ba1-563a-490d-87d8-2db421b6fce5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

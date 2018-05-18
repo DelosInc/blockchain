@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{C0A7C565-F813-48B6-9F34-5AD8F3AE4EA4}</ProjectGuid>
+    <ProjectGuid>{86235D5D-8EC3-4D3E-B4FA-2D9CD937960F}</ProjectGuid>
     <RootNamespace>wallet</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -70,16 +70,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\cryptopp700;C:\leveldb\include;D:\Repos\blockchain;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\db-6.2.32\build_windows;C:\cryptopp700;$(SolutionDir)record;$(SolutionDir)transaction;$(SolutionDir)block;$(SolutionDir)client;$(SolutionDir)blockchainHandler;$(SolutionDir)connection;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\db-6.2.32\build_windows\Win32\Debug;C:\cryptopp700\Win32\Output\Debug;C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -116,14 +119,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="wallet.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="wallet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\blockchainHandler\blockchainHandler.vcxproj">
+      <Project>{1231840f-2967-4ec7-8a08-d1766cb40045}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\block\block.vcxproj">
+      <Project>{cc5e9094-70d5-4bd1-97af-e052eeb46e4a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\client\client.vcxproj">
+      <Project>{bd7d8fa8-d920-4fc4-8293-7f7e4f56d357}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\transaction\transaction.vcxproj">
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

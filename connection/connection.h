@@ -1,20 +1,18 @@
 #pragma once
 
+#include <iomanip>
+#include <string>
+#include <sstream>
+#include <vector>
 #include <boost/asio.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/tuple/tuple.hpp>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <vector>
 
-class Connection
-{
+class Connection {
 public:
-
 	Connection(boost::asio::io_context& io_context)
 		: socket(io_context) {
 
@@ -25,15 +23,14 @@ public:
 	}
 
 	template <typename T, typename Handler>
-	void asyncWrite(const T& t, Handler handler)
-	{
+	void asyncWrite(const T& t, Handler handler) {
 		std::ostringstream archiveStream;
 		boost::archive::text_oarchive archive(archiveStream);
 		archive << t;
 		outboundData = archiveStream.str();
 		std::ostringstream headerStream;
-		headerStream << std::setw(header_length) << std::hex << outboundData.size();
-		if (!headerStream || headerStream.str().size() != header_length) {
+		headerStream << std::setw(8) << std::hex << outboundData.size();
+		if (!headerStream || headerStream.str().size() != 8) {
 			boost::system::error_code error(boost::asio::error::invalid_argument);
 			boost::asio::post(socket.get_executor(), boost::bind(handler, error));
 			return;
@@ -59,20 +56,19 @@ public:
 		else {
 			std::istringstream is(std::string(inboundHeader, 8));
 			std::size_t inboundDataSize = 0;
-			if (!(is >> std::hex >> inbound_data_size)) {
+			if (!(is >> std::hex >> inboundDataSize)) {
 				boost::system::error_code error(boost::asio::error::invalid_argument);
 				boost::get<0>(handler)(error);
 				return;
 			}
 			inboundData.resize(inboundDataSize);
-			void (Connection::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &Connection::handle_read_data<T, Handler>;
+			void (Connection::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &Connection::handleReadData<T, Handler>;
 			boost::asio::async_read(socket, boost::asio::buffer(inboundData), boost::bind(f, this, boost::asio::placeholders::error, boost::ref(t), handler));
 		}
 	}
 
 	template <typename T, typename Handler>
-	void handleReadData(const boost::system::error_code& e, T& t, boost::tuple<Handler> handler)
-	{
+	void handleReadData(const boost::system::error_code& e, T& t, boost::tuple<Handler> handler) {
 		if (e) {
 			boost::get<0>(handler)(e);
 		}
@@ -84,6 +80,7 @@ public:
 				archive >> t;
 			}
 			catch (std::exception& e) {
+				(void)e;
 				boost::system::error_code error(boost::asio::error::invalid_argument);
 				boost::get<0>(handler)(error);
 				return;

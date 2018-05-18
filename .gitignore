@@ -1,2 +1,24 @@
 
 \.vs/
+
+block/Debug/
+
+blockchainHandler/Debug/
+
+client/Debug/
+
+miner/Debug/
+
+server/Debug/
+
+wallet/Debug/
+
+transaction/Debug/
+
+queueHandler/Debug/
+
+record/Debug/
+
+validator/Debug/
+
+Debug/

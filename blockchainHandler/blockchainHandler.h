@@ -3,23 +3,23 @@
 #include <cassert>
 #include <string>
 #include <sstream>
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/archive/text_oarchive.hpp>
-#include <leveldb/db.h>
+#include <list>
+#include <db_cxx.h>
 
 #include "block.h"
 
-class BlockchainHandler
-{
+class BlockchainHandler {
+private:
+	Db db;
+	std::string dbFileName;
+	u_int32_t cFlags;
+	unsigned int height;
 public:
-	BlockchainHandler();
+	BlockchainHandler(std::string, std::string);
+	~BlockchainHandler();
 	void addBlock(Block const&);
 	Block getBlock(unsigned int height);
-	~BlockchainHandler();
-private:
-	leveldb::DB* db;
-	leveldb::Options options;
-	leveldb::Status status;
-	std::string height;
+	unsigned int getHeight();
+	std::string getBlockHash();
 };
 

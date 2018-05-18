@@ -8,13 +8,14 @@ void Record::setAmount(unsigned long int amount) {
 	this->amount = amount;
 }
 
-struct InSig Record::getInSig() const {
+Record::InSig Record::getInSig() const {
 	return inSig;
 }
 
-void Record::setInSig(std::string sig, std::string pubKeyHash) {
+void Record::setInSig(std::string sig, std::string pubKeyHash, std::string concatenatedRecord) {
 	this->inSig.sig = sig;
-	this->inSig.pubKeyHash = pubKeyHash;
+	this->inSig.pubKey = pubKeyHash;
+	this->inSig.concatenatedRecord = concatenatedRecord;
 }
 
 std::string Record::getOutSig() const {
@@ -23,4 +24,15 @@ std::string Record::getOutSig() const {
 
 void Record::setOutSig(std::string outSig) {
 	this->outSig = outSig;
+}
+
+bool Record::operator == (Record record) {
+	if (this->amount == record.amount &&
+		this->inSig.concatenatedRecord == record.inSig.concatenatedRecord &&
+		this->inSig.pubKey == record.inSig.pubKey &&
+		this->inSig.sig == record.inSig.sig &&
+		this->outSig == record.outSig) {
+		return true;
+	}
+	return false;
 }

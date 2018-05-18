@@ -76,8 +76,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\db-6.2.32\build_windows;$(SolutionDir)coinbaseTransaction;$(SolutionDir)blockchainHandler;C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler;$(SolutionDir)server</AdditionalIncludeDirectories>
     </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -85,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)blockchainHandler;$(SolutionDir)queueHandler;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -96,12 +99,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)server</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_67_0;C:\cryptopp700;$(SolutionDir)block;$(SolutionDir)transaction;$(SolutionDir)record;$(SolutionDir)queueHandler;$(SolutionDir)server</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\boost_1_67_0\lib32-msvc-14.1;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -128,11 +134,14 @@
     <ProjectReference Include="..\block\block.vcxproj">
       <Project>{cc5e9094-70d5-4bd1-97af-e052eeb46e4a}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\queueHandler\queueHandler.vcxproj">
+      <Project>{02e51ba1-563a-490d-87d8-2db421b6fce5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\record\record.vcxproj">
       <Project>{ad4b50ba-5ab1-4bd2-ada8-4fdebd095d4d}</Project>
     </ProjectReference>
     <ProjectReference Include="..\transaction\transaction.vcxproj">
-      <Project>{41b26468-837b-450c-b159-18e21567966a}</Project>
+      <Project>{d26b066a-314f-4339-88c1-e3512f88cadb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
