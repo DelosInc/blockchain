@@ -11,8 +11,8 @@ Transaction QueueHandler::getTransaction() {
 		mutex.lock();
 		Transaction toBeMined = pool.front();
 		pool.pop();
-		return toBeMined;
 		mutex.unlock();
+		return toBeMined;
 	}
 	throw QueueEmpty();
 }
