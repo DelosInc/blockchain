@@ -13,9 +13,9 @@ bool Miner::verifyTransaction(Transaction transaction) {
 		return false;
 	}
 	if (!verifiedTransactions.empty()) {
-		for (int recIn_i = 0; recIn_i < transaction.getRecInSize(); recIn_i++) {
-			for (int verified_i = 0; verified_i < verifiedTransactions.size(); verified_i++) {
-				for (int recOut_j = 0; recOut_j < 2; recOut_j++) {
+		for (unsigned int recIn_i = 0; recIn_i < transaction.getRecInSize(); recIn_i++) {
+			for (unsigned int verified_i = 0; verified_i < verifiedTransactions.size(); verified_i++) {
+				for (unsigned int recOut_j = 0; recOut_j < 2; recOut_j++) {
 					if (transaction.getRecIn(recIn_i) ==
 						verifiedTransactions[verified_i].getRecOut(recOut_j)) {
 						return false;
@@ -69,7 +69,7 @@ Block Miner::mine() {
 		if (!currentQueue->isEmpty()) {
 			verifying.push_back(std::thread(&Miner::verify, this, currentQueue->getTransaction()));
 		}
-		if (verifiedTransactions.size == 5) {
+		if (verifiedTransactions.size() == 5) {
 			createBlock();
 			break;
 		}
@@ -93,7 +93,7 @@ void Miner::verify(Transaction& transaction) {
 	}
 }
 
-Transaction Miner::coinbase() {
+void Miner::coinbase() {
 	Transaction cb;
 	Record cbRecord;
 	cbRecord.setAmount(10);
@@ -103,12 +103,11 @@ Transaction Miner::coinbase() {
 	std::vector<Record> recout;
 	recout.push_back(cbRecord);
 	cb.setRecOut(recout);
-	return cb;
+	verifiedTransactions.push_back(cb);
 }
 
 void Miner::createBlock() {
 	Block block;
-	verifiedTransactions.push_back(coinbase());
 	block.setTransaction(verifiedTransactions);
 	block.setHeight(handler->getHeight() + 1);
 	block.setPrevBlockHash(handler->getBlockHash());
@@ -121,7 +120,7 @@ void Miner::createBlock() {
 
 	CryptoPP::SHA256 hash;
 	std::string blockString = std::to_string(block.getHeight()) + std::to_string(block.getTimestamp()) + 
-		block.getPrevBlockHash + transactionsString;
+		block.getPrevBlockHash() + transactionsString;
 	std::string digest;
 	CryptoPP::StringSource s(blockString, true, new CryptoPP::HashFilter(hash, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
 	

@@ -28,7 +28,7 @@ private:
 	bool verifySig(Record);
 	std::vector<Transaction> verifiedTransactions;
 	std::vector<std::thread> verifying;
-	Transaction coinbase();
+	void coinbase();
 	void createBlock();
 public:
 	Miner(std::string, QueueHandler*, BlockchainHandler*);
