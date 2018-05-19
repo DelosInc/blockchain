@@ -8,13 +8,11 @@ BlockchainHandler::BlockchainHandler(std::string path, std::string filename)
 		db.set_error_stream(&std::cerr);
 		db.open(NULL, dbFileName.c_str(), NULL, DB_QUEUE, cFlags, 0);
 	}
-	catch (DbException &e) {
-		std::cerr << "Error opening database\n";
-		std::cerr << e.what() << std::endl;
+	catch (DbException) {
+		throw;
 	}
-	catch (std::exception &e) {
-		std::cerr << "Error opening database\n";
-		std::cerr << e.what() << std::endl;
+	catch (std::exception) {
+		throw;
 	}
 	Dbc *iterator;
 	Dbt key, value;

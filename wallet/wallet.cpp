@@ -118,7 +118,18 @@ int main() {
 	std::cout << "Enter filename and path";
 	std::cin >> path >> filename;
 	BlockchainHandler handler(path, filename);
-	Wallet w(&handler);
+	Wallet w;
+	try {
+		Wallet w(&handler);
+	}
+	catch (DbException& e) {
+		std::cerr << "Error opening database\n";
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cerr << "Error opening database\n";
+		std::cerr << e.what() << std::endl;
+	}
 	unsigned long int balance = w.getBalance();
 	unsigned long int amount;
 	std::string outputAddress;
