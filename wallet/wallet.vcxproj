@@ -122,9 +122,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="wallet.cpp" />
+    <ClCompile Include="walletException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wallet.h" />
+    <ClInclude Include="walletException.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\blockchainHandler\blockchainHandler.vcxproj">

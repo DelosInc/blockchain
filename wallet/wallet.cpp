@@ -107,7 +107,7 @@ std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
 			unspentOutputs.pop_front();
 		}
 		else {
-			break;
+			throw AmountUnderflow();
 		}
 	}
 	return recIn;
@@ -116,10 +116,10 @@ std::vector<Record> Wallet::initialiseRecIn(unsigned long int amount) {
 std::vector<Record> Wallet::initialiseRecOut(unsigned long int amount, std::string address) {
 	std::vector<Record> recOut;
 	recOut[0].setAmount(amount);
-	recOut[0].setInSig(nullptr, nullptr, nullptr);
+	recOut[0].setInSig();
 	recOut[0].setOutSig(address); //outgoing amount
 	recOut[1].setAmount(getBalance() - amount);
-	recOut[1].setInSig(nullptr, nullptr, nullptr);
+	recOut[1].setInSig();
 	recOut[1].setOutSig(getPubKeyHash()); //crediting change to self
 	return recOut;
 }
@@ -140,7 +140,12 @@ unsigned long int Wallet::getBalance() const {
 }
 
 Transaction Wallet::initialiseTransaction(std::string address, unsigned long int amount) {
-	transaction.setRecIn(initialiseRecIn(amount));
+	try {
+		transaction.setRecIn(initialiseRecIn(amount));
+	}
+	catch (AmountUnderflow& e) {
+		throw;
+	}
 	transaction.setRecOut(initialiseRecOut(amount, address));
 	transaction.setTimestamp();
 	transaction.setTID();
@@ -198,16 +203,17 @@ int main() {
 	std::cin >> outputAddress;
 	std::cout << "Enter amount to be sent: ";
 	std::cin >> amount;
-	if (amount >= balance) {
-		try {
-			boost::asio::io_context io_context;
-			Client client(io_context, hostname, port);
-			client.setTransaction(w.initialiseTransaction(outputAddress, amount));
-			io_context.run();
-		}
-		catch (std::exception& e) {
-			std::cerr << e.what() << std::endl;
-		}
+	try {
+		boost::asio::io_context io_context;
+		Client client(io_context, hostname, port);
+		client.setTransaction(w.initialiseTransaction(outputAddress, amount));
+		io_context.run();
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	catch (AmountUnderflow& e){
+		std::cerr << e.what() << std::endl;
 	}
 	return 0;
 }

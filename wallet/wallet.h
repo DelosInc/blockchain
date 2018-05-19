@@ -16,6 +16,7 @@
 #include "block.h"
 #include "client.h"
 #include "blockchainHandler.h"
+#include "walletException.h"
 
 struct KeyPair {
 	std::string privateKey;

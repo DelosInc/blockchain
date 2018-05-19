@@ -18,9 +18,15 @@
     <ClCompile Include="wallet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="walletException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="wallet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="walletException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
