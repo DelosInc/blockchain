@@ -148,21 +148,43 @@ Transaction Wallet::initialiseTransaction(std::string address, unsigned long int
 }
 
 int main() {
+	char choice;
 	std::string path, filename;
 	std::cout << "Enter filename and path";
 	std::cin >> path >> filename;
 	BlockchainHandler handler(path, filename);
+	std::cout << "Do you have an address (Y/n)";
+	std::cin >> choice;
 	Wallet w;
-	try {
-		Wallet w(&handler);
+	if (choice == 'Y') {
+		try {
+			std::string address;
+			std::cout << "Enter address";
+			w = Wallet(&handler, address);
+		}
+		catch (DbException& e) {
+			std::cerr << "Error opening database\n";
+			std::cerr << e.what() << std::endl;
+		}
+		catch (std::exception &e) {
+			std::cerr << "Error opening database\n";
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch (DbException& e) {
-		std::cerr << "Error opening database\n";
-		std::cerr << e.what() << std::endl;
-	}
-	catch (std::exception &e) {
-		std::cerr << "Error opening database\n";
-		std::cerr << e.what() << std::endl;
+	else {
+		try {
+			std::string address;
+			std::cout << "Enter address";
+			w = Wallet(&handler, address);
+		}
+		catch (DbException& e) {
+			std::cerr << "Error opening database\n";
+			std::cerr << e.what() << std::endl;
+		}
+		catch (std::exception &e) {
+			std::cerr << "Error opening database\n";
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	unsigned long int balance = w.getBalance();
 	unsigned long int amount;

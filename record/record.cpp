@@ -8,7 +8,7 @@ void Record::setAmount(unsigned long int amount) {
 	this->amount = amount;
 }
 
-Record::InSig Record::getInSig() const {
+InSig Record::getInSig() const {
 	return inSig;
 }
 
