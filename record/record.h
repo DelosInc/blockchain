@@ -15,6 +15,7 @@ public:
 	unsigned long int getAmount() const;
 	void setAmount(unsigned long int);
 	InSig getInSig() const;
+	void setInSig();
 	void setInSig(std::string, std::string, std::string);
 	std::string getOutSig() const;
 	void setOutSig(std::string);

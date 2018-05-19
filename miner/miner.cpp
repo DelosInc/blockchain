@@ -97,7 +97,7 @@ void Miner::coinbase() {
 	Transaction cb;
 	Record cbRecord;
 	cbRecord.setAmount(10);
-	cbRecord.setInSig(nullptr, nullptr, nullptr);
+	cbRecord.setInSig();
 	cbRecord.setOutSig(address);
 	cb.setRecIn(std::vector<Record>());
 	std::vector<Record> recout;

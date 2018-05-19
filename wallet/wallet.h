@@ -31,8 +31,9 @@ private:
 	std::vector<Record> initialiseRecIn(unsigned long int);
 	std::vector<Record> initialiseRecOut(unsigned long int, std::string);
 public:
-	Wallet() {}
+	Wallet() = default;
 	Wallet(BlockchainHandler*);
+	Wallet(BlockchainHandler*, std::string);
 	void generateKeyPair();
 	unsigned long int getBalance() const;
 	Transaction initialiseTransaction(std::string, unsigned long int);

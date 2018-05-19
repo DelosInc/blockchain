@@ -12,6 +12,10 @@ Record::InSig Record::getInSig() const {
 	return inSig;
 }
 
+void Record::setInSig() {
+	inSig=InSig();
+}
+
 void Record::setInSig(std::string sig, std::string pubKeyHash, std::string concatenatedRecord) {
 	this->inSig.sig = sig;
 	this->inSig.pubKey = pubKeyHash;
