@@ -2,14 +2,16 @@
 
 #include <string>
 
+struct InSig {
+	std::string sig;
+	std::string pubKey;
+	std::string concatenatedRecord;
+};
+
 class Record {
 private:
 	unsigned long int amount;
-	struct InSig {
-		std::string sig;
-		std::string pubKey;
-		std::string concatenatedRecord;
-	} inSig;
+	InSig  inSig;
 	std::string outSig;
 public:
 	unsigned long int getAmount() const;

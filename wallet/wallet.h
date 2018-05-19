@@ -17,12 +17,14 @@
 #include "client.h"
 #include "blockchainHandler.h"
 
+struct KeyPair {
+	std::string privateKey;
+	std::string publicKey;
+};
+
 class Wallet {
 private:
-	struct KeyPair {
-		std::string privateKey;
-		std::string publicKey;
-	} keyPair;
+	KeyPair keyPair;
 	std::list<Record> unspentOutputs;
 	unsigned long int balance;
 	Transaction transaction;
